@@ -15,19 +15,6 @@
     }
   });
 
-  /* ---------- Гонка: зайчата против законов ---------- */
-  var bunniesEl = document.getElementById("bunnies");
-  var lawsEl = document.getElementById("laws");
-  var start = Date.now();
-  function tick() {
-    var sec = (Date.now() - start) / 1000;
-    bunniesEl.textContent = Math.floor(sec * 3.7).toLocaleString("ru-RU");
-    // Дума принимает один закон примерно раз в 10 минут. В лучшем случае.
-    lawsEl.textContent = Math.floor(sec / 600).toLocaleString("ru-RU");
-  }
-  tick();
-  setInterval(tick, 250);
-
   /* ---------- Состав ---------- */
   var team = window.LPZK_TEAM || {};
   function esc(s) {
@@ -40,14 +27,12 @@
     if (!el || !list) return;
     el.innerHTML = list.map(function (p) {
       var vacant = !p.name;
-      var initials = vacant ? "?" : p.name.split(/\s+/).map(function (w) { return w[0]; }).join("").slice(0, 2);
-      return '<article class="person' + (vacant ? " person--vacant" : "") + '">' +
-        '<div class="person__avatar" aria-hidden="true">' + esc(initials) + "</div>" +
-        '<div class="person__role">' + esc(p.role) + "</div>" +
-        '<div class="person__name">' + (vacant ? "Вакантно" : esc(p.name)) + "</div>" +
-        '<div class="person__meta">' + esc(p.official || "") +
-        (p.passport ? " · паспорт " + esc(p.passport) : "") + "</div>" +
-        "</article>";
+      return '<div class="roster__row' + (vacant ? " is-vacant" : "") + '">' +
+        '<div class="roster__role">' + esc(p.role) +
+        (p.official ? '<span>' + esc(p.official) + "</span>" : "") + "</div>" +
+        '<div class="roster__name">' + (vacant ? "вакантно" : esc(p.name)) +
+        (p.passport ? '<span>паспорт ' + esc(p.passport) + "</span>" : "") + "</div>" +
+        "</div>";
     }).join("");
   }
   renderTeam("team-leaders", team.leaders);
@@ -186,13 +171,4 @@
     }
   });
 
-  document.getElementById("dl-btn").addEventListener("click", function () {
-    var blob = new Blob(["﻿" + letterEl.textContent], { type: "text/plain;charset=utf-8" });
-    var a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    a.download = "Заявление_ЛПЗК_" + (val("f-name").replace(/\s+/g, "_") || "кандидат") + ".txt";
-    document.body.appendChild(a);
-    a.click();
-    setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 500);
-  });
 })();
