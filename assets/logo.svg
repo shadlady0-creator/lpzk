@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Заяц в прыжке на зелёном фоне">
+  <defs>
+    <radialGradient id="bg" cx="40%" cy="35%" r="75%">
+      <stop offset="0" stop-color="#4caf50"/>
+      <stop offset="1" stop-color="#1f5f2a"/>
+    </radialGradient>
+  </defs>
+  <circle cx="100" cy="100" r="96" fill="url(#bg)"/>
+  <circle cx="100" cy="100" r="88" fill="none" stroke="#f3efe2" stroke-opacity=".35" stroke-width="2"/>
+  <g fill="#f8f5ea">
+    <!-- задняя лапа, вытянута назад -->
+    <path d="M70 118 C55 126 38 136 20 146 C17 148 19 152 23 151 C42 146 62 139 80 128 Z"/>
+    <!-- тело -->
+    <ellipse cx="98" cy="108" rx="52" ry="25" transform="rotate(-16 98 108)"/>
+    <!-- передние лапы, вытянуты вперёд -->
+    <path d="M132 104 C146 108 160 113 176 116 C180 117 180 121 176 122 C158 123 142 120 128 115 Z"/>
+    <path d="M126 112 C138 120 150 127 164 132 C168 134 166 138 162 137 C147 134 134 128 120 120 Z" fill-opacity=".85"/>
+    <!-- голова -->
+    <ellipse cx="148" cy="80" rx="21" ry="16" transform="rotate(-20 148 80)"/>
+    <!-- уши -->
+    <ellipse cx="134" cy="47" rx="7" ry="28" transform="rotate(-38 134 47)"/>
+    <ellipse cx="146" cy="44" rx="7.5" ry="29" transform="rotate(-24 146 44)"/>
+    <!-- хвост -->
+    <circle cx="48" cy="104" r="10"/>
+  </g>
+  <ellipse cx="146" cy="44" rx="3" ry="20" transform="rotate(-24 146 44)" fill="#f0a3a0" fill-opacity=".6"/>
+  <circle cx="155" cy="76" r="3" fill="#1f3b22"/>
+  <circle cx="168" cy="84" r="2.4" fill="#e88b8b"/>
+</svg>
